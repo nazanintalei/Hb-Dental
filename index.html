@@ -189,15 +189,17 @@ body.hov #cur-ring{width:48px;height:48px;border-color:rgba(21,101,192,.55);}
 
 /* ── LOADER ─────────────────────────────── */
 #loader{position:fixed;inset:0;background:white;z-index:99997;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;padding:0 24px;text-align:center;}
+#loader > *{max-width:100%;margin-left:auto;margin-right:auto;}
 #loader.done{opacity:0;visibility:hidden;pointer-events:none;}
-.ldr-cross{font-size:42px;margin-bottom:18px;opacity:0;animation:ldf .6s .2s forwards;text-align:center;}
-.ldr-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);letter-spacing:1px;opacity:0;animation:ldf .6s .5s forwards;text-align:center;max-width:100%;}
-.ldr-sub{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--txgray);margin-top:6px;opacity:0;animation:ldf .6s .8s forwards;text-align:center;max-width:100%;}
+.ldr-cross{font-size:42px;margin-bottom:18px;opacity:0;animation:ldf .6s .2s forwards;text-align:center;line-height:1;display:flex;align-items:center;justify-content:center;width:56px;height:56px;}
+.ldr-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);letter-spacing:1px;opacity:0;animation:ldf .6s .5s forwards;text-align:center;line-height:1.25;}
+.ldr-sub{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--txgray);margin-top:6px;opacity:0;animation:ldf .6s .8s forwards;text-align:center;line-height:1.5;}
 .ldr-line{width:160px;height:2px;background:#E8EFF7;margin-top:28px;border-radius:2px;overflow:hidden;}
 .ldr-prog{height:100%;background:var(--ocean);width:0%;animation:ldp 2s .4s ease forwards;border-radius:2px;}
 @media(max-width:480px){
-  .ldr-name{font-size:20px;letter-spacing:.5px;}
-  .ldr-sub{font-size:9px;letter-spacing:2px;line-height:1.5;}
+  .ldr-cross{font-size:36px;width:48px;height:48px;margin-bottom:14px;}
+  .ldr-name{font-size:18px;letter-spacing:.3px;}
+  .ldr-sub{font-size:8px;letter-spacing:1.5px;}
   .ldr-line{width:120px;margin-top:22px;}
 }
 @keyframes ldf{to{opacity:1;}}
@@ -773,7 +775,17 @@ footer{background:#060D18;padding:80px 80px 0;}
 
   /* Doctor section */
   .dr-grid{gap:32px;}
-  .dr-photo-main{max-width:320px;margin:0 auto;}
+  .dr-photo-stack{display:flex;flex-direction:column;align-items:center;}
+  .dr-photo-main{max-width:320px;width:100%;margin:0 auto;height:auto;aspect-ratio:3/4;}
+  .dr-card-float{position:static;margin-top:-18px;width:90%;max-width:340px;}
+  .dr-right{text-align:center;display:flex;flex-direction:column;align-items:center;}
+  .dr-right .section-label{justify-content:center;}
+  .dr-name{font-size:36px;text-align:center;}
+  .dr-title{text-align:center;}
+  .dr-quote{border-left:none;border-top:2px solid var(--blue2);padding-left:0;padding-top:16px;text-align:center;font-size:18px;max-width:520px;margin-left:auto;margin-right:auto;}
+  .dr-body{text-align:center;max-width:520px;}
+  .dr-stats-row{justify-content:center;flex-wrap:wrap;gap:22px;width:100%;}
+  .dr-stats-row > div{text-align:center;}
   .dr-stats{gap:10px;}
 
   /* Reviews */

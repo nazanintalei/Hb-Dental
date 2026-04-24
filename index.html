@@ -361,9 +361,9 @@ body.has-offer .hero{padding-top:160px;}
 /* ── PHOTO GALLERY ──────────────────────── */
 .gallery-section{background:white;padding:100px 80px;}
 .gallery-grid{margin-top:56px;}
-.gallery-row1{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px;margin-bottom:12px;height:280px;}
-.gallery-row2{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:12px;margin-bottom:12px;height:280px;}
-.gallery-row3{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;height:220px;}
+.gallery-row-single{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;height:340px;}
+@media(max-width:900px){.gallery-row-single{grid-template-columns:repeat(2,1fr);height:auto;}.gallery-row-single .gphoto{aspect-ratio:1/1;}}
+@media(max-width:480px){.gallery-section{padding:70px 20px;}}
 .gphoto{position:relative;border-radius:10px;overflow:hidden;cursor:none;display:flex;flex-direction:column;height:100%;}
 .gphoto.tall,.gphoto.wide,.gphoto.sq{height:100%;}
 .gphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
@@ -727,38 +727,6 @@ footer{background:#060D18;padding:80px 80px 0;}
   </div>
 </div>
 
-<!-- VIDEO SECTION -->
-<section class="video-section" id="videos">
-  <div class="section-label rv">Watch & Learn</div>
-  <h2 class="section-h2 rv">See Our Work, <em>Meet Our Team</em></h2>
-  <p class="section-sub rv">Patient stories, procedure walkthroughs, and a behind-the-scenes look at what makes our practice different.</p>
-  <div class="video-grid">
-    <div class="video-main rv-l">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80" alt="Practice tour" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-      <div class="video-placeholder" style="background:linear-gradient(135deg,rgba(10,37,64,.55),rgba(21,101,192,.45));position:relative;z-index:1;">
-        <div class="play-btn">▶</div>
-        <div class="video-label">📹 Practice Tour — HB Advanced Dental Group</div>
-      </div>
-    </div>
-    <div class="video-sub-grid">
-      <div class="video-thumb rv-r" style="transition-delay:.1s;position:relative;">
-        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80" alt="Patient testimonial" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-        <div class="vt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-sm">▶</div><div class="vt-label">Patient Story: 27-Year Patient Testimonial</div></div>
-      </div>
-      <div class="video-thumb rv-r" style="transition-delay:.2s;position:relative;">
-        <img src="https://images.unsplash.com/photo-1581585504632-85e91bb8e76a?w=600&q=80" alt="Invisalign" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-        <div class="vt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-sm">▶</div><div class="vt-label">Invisalign: What to Expect at HB Dental</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="video-row">
-    <div class="video-row-thumb rv" style="transition-delay:.05s;"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=500&q=80" alt="Implant" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="vrt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-xs">▶</div></div><div style="position:absolute;bottom:8px;left:10px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);z-index:2;">Implant Procedure Walk-Through</div></div>
-    <div class="video-row-thumb rv" style="transition-delay:.1s;"><img src="https://images.unsplash.com/photo-1588776813677-77aaf5595b83?w=500&q=80" alt="Gum surgery" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="vrt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-xs">▶</div></div><div style="position:absolute;bottom:8px;left:10px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);z-index:2;">Pinhole Gum Surgery Explained</div></div>
-    <div class="video-row-thumb rv" style="transition-delay:.15s;"><img src="https://images.unsplash.com/photo-1581585099522-f6ac2efe3919?w=500&q=80" alt="Veneers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="vrt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-xs">▶</div></div><div style="position:absolute;bottom:8px;left:10px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);z-index:2;">Porcelain Veneers Transformation</div></div>
-    <div class="video-row-thumb rv" style="transition-delay:.2s;"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="Doctor" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="vrt-overlay" style="position:relative;z-index:1;background:linear-gradient(180deg,rgba(10,37,64,.1),rgba(10,37,64,.7));"><div class="play-xs">▶</div></div><div style="position:absolute;bottom:8px;left:10px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);z-index:2;">Meet Dr. Christensen</div></div>
-  </div>
-</section>
-
 <!-- HESITATION / FEAR-ADDRESSING -->
 <section class="hesitate-section">
   <div class="hesitate-head">
@@ -815,21 +783,11 @@ footer{background:#060D18;padding:80px 80px 0;}
   <h2 class="section-h2 rv">A Practice You'll <em>Feel Good In</em></h2>
   <p class="section-sub rv">Professional, welcoming, and equipped with modern technology — designed around patient comfort.</p>
   <div class="gallery-grid">
-    <div class="gallery-row1">
-      <div class="gphoto tall rv-l"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Reception and waiting area"><div class="gphoto-overlay"><span class="gphoto-tag">Reception</span></div></div>
-      <div class="gphoto wide rv"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Treatment Room 1"><div class="gphoto-overlay"><span class="gphoto-tag">Treatment Room</span></div></div>
-      <div class="gphoto wide rv-r"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80" alt="Sterilization and tech center"><div class="gphoto-overlay"><span class="gphoto-tag">Technology</span></div></div>
-    </div>
-    <div class="gallery-row2">
-      <div class="gphoto wide rv-l"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80" alt="Patient consultation room"><div class="gphoto-overlay"><span class="gphoto-tag">Consultation</span></div></div>
-      <div class="gphoto wide rv"><img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80" alt="Dr. Christensen with patient"><div class="gphoto-overlay"><span class="gphoto-tag">Care</span></div></div>
-      <div class="gphoto tall rv-r"><img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="Exterior 6968 Warner Ave"><div class="gphoto-overlay"><span class="gphoto-tag">Location</span></div></div>
-    </div>
-    <div class="gallery-row3">
-      <div class="gphoto sq rv"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Our team"><div class="gphoto-overlay"><span class="gphoto-tag">Team</span></div></div>
-      <div class="gphoto sq rv" style="transition-delay:.08s"><img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&q=80" alt="Digital X-ray suite"><div class="gphoto-overlay"><span class="gphoto-tag">X-Ray</span></div></div>
-      <div class="gphoto sq rv" style="transition-delay:.16s"><img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?w=600&q=80" alt="Smile transformation result"><div class="gphoto-overlay"><span class="gphoto-tag">Results</span></div></div>
-      <div class="gphoto sq rv" style="transition-delay:.24s"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Huntington Beach location"><div class="gphoto-overlay"><span class="gphoto-tag">Huntington Beach</span></div></div>
+    <div class="gallery-row-single">
+      <div class="gphoto sq rv-l"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Reception and waiting area"><div class="gphoto-overlay"><span class="gphoto-tag">Reception</span></div></div>
+      <div class="gphoto sq rv" style="transition-delay:.08s"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Modern treatment room"><div class="gphoto-overlay"><span class="gphoto-tag">Treatment Room</span></div></div>
+      <div class="gphoto sq rv" style="transition-delay:.16s"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80" alt="Patient consultation room"><div class="gphoto-overlay"><span class="gphoto-tag">Consultation</span></div></div>
+      <div class="gphoto sq rv-r" style="transition-delay:.24s"><img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="Exterior of 6968 Warner Ave"><div class="gphoto-overlay"><span class="gphoto-tag">Our Location</span></div></div>
     </div>
   </div>
 </section>

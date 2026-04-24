@@ -359,22 +359,46 @@ body.has-offer .hero{padding-top:160px;}
 .play-xs{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;font-size:13px;}
 
 /* ── PHOTO GALLERY ──────────────────────── */
-.gallery-section{background:white;padding:100px 80px;}
-.gallery-grid{margin-top:56px;}
-.gallery-row-single{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;height:340px;}
-@media(max-width:900px){.gallery-row-single{grid-template-columns:repeat(2,1fr);height:auto;}.gallery-row-single .gphoto{aspect-ratio:1/1;}}
-@media(max-width:480px){.gallery-section{padding:70px 20px;}}
-.gphoto{position:relative;border-radius:10px;overflow:hidden;cursor:none;display:flex;flex-direction:column;height:100%;}
-.gphoto.tall,.gphoto.wide,.gphoto.sq{height:100%;}
-.gphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
-.gphoto:hover img{transform:scale(1.04);}
-.gphoto-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--ice) 0%,var(--gray2) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
-.gphoto-placeholder span{font-size:22px;opacity:.5;}
-.gphoto-placeholder p{font-size:9px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;text-align:center;background:white;border-radius:100px;padding:4px 12px;border:1px solid rgba(21,101,192,.15);}
-.gphoto-overlay{position:absolute;bottom:0;left:0;right:0;top:0;background:rgba(10,37,64,0);transition:background .3s;display:flex;align-items:flex-end;padding:14px;pointer-events:none;}
-.gphoto:hover .gphoto-overlay{background:rgba(10,37,64,.3);}
-.gphoto-tag{background:white;color:var(--navy);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;opacity:0;transition:opacity .3s;transform:translateY(6px);}
-.gphoto:hover .gphoto-tag{opacity:1;transform:translateY(0);}
+/* ── GALLERY (Dark Cinematic) ───────────── */
+.gallery-section{background:#0E0E12;padding:130px 60px 140px;position:relative;overflow:hidden;}
+.gallery-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);}
+.gallery-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);}
+.gallery-section .section-label{display:flex;align-items:center;justify-content:center;gap:14px;color:#C9993A;margin-bottom:22px;}
+.gallery-section .section-label::before,
+.gallery-section .section-label::after{content:'';width:28px;height:1px;background:#C9993A;}
+.gallery-section .section-label{background:none;padding:0;}
+.gallery-section .section-h2{color:white;text-align:center;font-size:clamp(42px,5.2vw,68px);font-weight:300;letter-spacing:3px;text-transform:uppercase;line-height:1.1;margin-bottom:18px;}
+.gallery-section .section-h2 em{font-style:italic;font-weight:400;color:#C9993A;letter-spacing:2px;text-transform:none;}
+.gallery-section .section-sub{color:rgba(255,255,255,.5);text-align:center;max-width:620px;margin:0 auto;font-size:14px;letter-spacing:.3px;}
+.gallery-grid{margin-top:68px;max-width:1400px;margin-left:auto;margin-right:auto;}
+.gallery-row-single{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;height:auto;}
+.gphoto{position:relative;aspect-ratio:3/4;border-radius:0;overflow:hidden;display:block;background:#1a1a22;cursor:pointer;isolation:isolate;}
+.gphoto.tall,.gphoto.wide,.gphoto.sq{height:auto;aspect-ratio:3/4;}
+.gphoto img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.72) saturate(.85) contrast(1.05);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1);}
+.gphoto:hover img{filter:brightness(.9) saturate(1) contrast(1);transform:scale(1.06);}
+
+/* Dark gradient overlay */
+.gphoto::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 0%,transparent 40%,rgba(14,14,18,.3) 65%,rgba(14,14,18,.85) 100%);pointer-events:none;}
+/* Gold accent border reveal */
+.gphoto::after{content:'';position:absolute;inset:0;z-index:2;border:1px solid transparent;pointer-events:none;transition:border-color .4s;}
+.gphoto:hover::after{border-color:rgba(201,153,58,.4);}
+
+.gphoto-overlay{position:absolute;inset:0;z-index:3;background:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 24px 32px;pointer-events:none;}
+.gphoto:hover .gphoto-overlay{background:none;}
+
+/* Reveal a thin line above the label on hover */
+.gphoto-overlay::before{content:'';width:0;height:1px;background:#C9993A;margin-bottom:14px;transition:width .5s cubic-bezier(.2,.7,.2,1);}
+.gphoto:hover .gphoto-overlay::before{width:38px;}
+
+.gphoto-tag{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:white;letter-spacing:.5px;text-transform:none;background:none;border:none;padding:0;border-radius:0;opacity:1;transform:translateY(0);text-align:center;line-height:1.3;text-shadow:0 2px 20px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.2,.7,.2,1),color .3s;}
+.gphoto:hover .gphoto-tag{transform:translateY(-4px);color:#F5E6C4;}
+
+/* Small caption under the italic label — reveals on hover */
+.gphoto-caption{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:8px;opacity:0;transform:translateY(8px);transition:opacity .5s .1s,transform .5s .1s;}
+.gphoto:hover .gphoto-caption{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){.gallery-section{padding:80px 24px;}.gallery-row-single{grid-template-columns:repeat(2,1fr);gap:6px;}}
+@media(max-width:480px){.gallery-row-single{grid-template-columns:1fr;}.gphoto{aspect-ratio:16/10;}.gphoto-tag{font-size:19px;}}
 
 /* ── SERVICES ───────────────────────────── */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
@@ -604,6 +628,244 @@ footer{background:#060D18;padding:80px 80px 0;}
 .footer-bottom a:hover{color:var(--sky);}
 .footer-tagline{text-align:center;padding:24px 0;border-top:1px solid rgba(255,255,255,.03);}
 .footer-tagline p{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.07);}
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE LAYER
+   Desktop design stays intact. Everything below scales down
+   gracefully for tablet (1024 and below) and phone (640 and below).
+   ═══════════════════════════════════════════════════════════ */
+
+/* Tablet breakpoint */
+@media(max-width:1024px){
+  nav{padding:0 24px;height:64px;}
+  .nav-brand-main{font-size:13px;}
+  .nav-brand-sub{font-size:9px;}
+  .nav-links{gap:20px;}
+  .nav-links a{font-size:10px;}
+
+  .offer-inner{padding:8px 20px;gap:14px;}
+  .offer-msg{font-size:11px;}
+  .offer-eyebrow{display:none;}
+  body.has-offer .hero{padding-top:130px;}
+
+  /* Section padding reduction */
+  .section,
+  .hesitate-section,
+  .ba-section,
+  .dr-section,
+  .reviews-section,
+  .pkg-section,
+  .cta-band,
+  .faq-section,
+  .contact-section,
+  .gallery-section{padding:70px 28px;}
+  footer{padding:60px 28px 0;}
+
+  /* Grids collapse */
+  .services-grid,
+  .ba-grid,
+  .reviews-grid,
+  .pkg-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+
+  .hesitate-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-band{grid-template-columns:repeat(3,1fr);}
+  .stats-band .stat-cell:nth-child(4),
+  .stats-band .stat-cell:nth-child(5){border-top:1px solid rgba(255,255,255,.08);}
+
+  .ba-intro,
+  .dr-grid,
+  .contact-wrap{grid-template-columns:1fr;gap:40px;}
+
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+
+  .ins-grid{gap:28px;}
+  .tb-inner{gap:24px;}
+}
+
+/* Phone breakpoint */
+@media(max-width:640px){
+  /* NAV — hide full nav links, show only brand + mobile menu hint via CTA bar */
+  nav{padding:0 16px;height:58px;}
+  .nav-brand-main{font-size:12px;}
+  .nav-brand-sub{display:none;}
+  .nav-links{display:none;}
+  .nav-cta{padding:8px 14px !important;font-size:9px !important;}
+
+  /* OFFER BAR — simplify */
+  .offer-bar .offer-divider{display:none;}
+  .offer-inner{padding:8px 12px;gap:10px;flex-wrap:nowrap;}
+  .offer-pulse{display:none;}
+  .offer-msg{font-size:10px;line-height:1.35;flex:1;}
+  .offer-msg em{display:inline;}
+  .offer-cta{padding:6px 10px;font-size:9px;letter-spacing:1px;white-space:nowrap;}
+  .offer-close{padding:4px 6px;font-size:14px;}
+  body.has-offer .hero{padding-top:110px;}
+
+  /* HERO */
+  .hero{padding:100px 18px 80px;min-height:auto;}
+  .hero-eyebrow{padding:6px 12px;margin-bottom:18px;}
+  .hero-eyebrow span{font-size:8px;letter-spacing:1.5px;}
+  .hero-h1{font-size:42px !important;line-height:1.05;margin-bottom:18px;letter-spacing:-.5px;}
+  .hero-sub{font-size:14px;line-height:1.6;margin-bottom:28px;padding:0 6px;}
+  .hero-btns{flex-direction:column;width:100%;gap:10px;margin-bottom:36px;}
+  .hero-btns a{width:100%;justify-content:center;padding:15px 20px;}
+  .hero-trust-row{gap:12px;}
+  .htrust{flex:1;min-width:0;justify-content:center;flex-direction:column;text-align:center;gap:6px;}
+  .htrust-icon{width:36px;height:36px;font-size:16px;}
+  .htrust-num{font-size:18px;}
+  .htrust-lbl{font-size:8px;letter-spacing:.8px;}
+  .hero-float-card{display:none;} /* Too crowded on phone */
+  .hero-scroll-hint{display:none;}
+
+  /* STATS BAND */
+  .stats-band{grid-template-columns:repeat(2,1fr);}
+  .stats-band .stat-cell{padding:24px 10px;border-right:1px solid rgba(255,255,255,.08);}
+  .stats-band .stat-cell:nth-child(2n){border-right:none;}
+  .stats-band .stat-cell:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08);}
+  .stats-band .stat-cell:last-child{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.08);}
+  .stat-big{font-size:30px !important;}
+  .stat-label{font-size:9px;letter-spacing:1.2px;}
+
+  /* Section typography */
+  .section-h2,
+  .hero-h1{letter-spacing:-.5px;}
+  .section-h2{font-size:30px !important;line-height:1.15;}
+  .section-sub{font-size:13px;}
+  .section-label{font-size:9px;letter-spacing:2px;}
+
+  /* Section padding tighter on phone */
+  .section,
+  .hesitate-section,
+  .ba-section,
+  .dr-section,
+  .reviews-section,
+  .pkg-section,
+  .cta-band,
+  .faq-section,
+  .contact-section,
+  .gallery-section,
+  .insurance-strip,
+  .trust-badges{padding:56px 18px !important;}
+
+  /* GRIDS — everything single column on phone */
+  .services-grid,
+  .ba-grid,
+  .reviews-grid,
+  .pkg-grid,
+  .hesitate-grid,
+  .office-grid,
+  .footer-top{grid-template-columns:1fr !important;gap:14px;}
+
+  /* Service cards */
+  .svc-card{padding:24px 22px;}
+  .svc-name{font-size:18px;}
+  .svc-desc{font-size:13px;}
+
+  /* Before/After */
+  .ba-card{margin:0;}
+  .ba-photos{grid-template-columns:1fr 1fr;}
+  .ba-type{font-size:12px;}
+  .ba-desc{font-size:12px;}
+
+  /* Doctor section */
+  .dr-grid{gap:32px;}
+  .dr-photo-main{max-width:320px;margin:0 auto;}
+  .dr-stats{gap:10px;}
+
+  /* Reviews */
+  .review-card{padding:26px 22px;}
+  .review-text{font-size:13px;}
+
+  /* Pricing */
+  .pkg-card{padding:32px 26px;}
+  .pkg-price{font-size:38px;}
+
+  /* CTA band */
+  .cta-h2{font-size:28px !important;line-height:1.2;}
+  .cta-sub{font-size:13px;}
+
+  /* FAQ */
+  .faq-q{padding:18px 20px;font-size:13px;gap:12px;}
+  .faq-q::after{font-size:22px;}
+  .faq-a{padding:0 20px 20px;font-size:12px;}
+
+  /* CONTACT FORM */
+  .contact-section{padding:56px 18px !important;}
+  .contact-form{padding:28px 22px;}
+  .cf-head{font-size:22px;}
+  .cf-row{grid-template-columns:1fr;gap:10px;}
+  .cf-field input,
+  .cf-field select,
+  .cf-field textarea{font-size:16px;} /* 16px prevents iOS zoom on focus */
+  .cf-submit{padding:15px;font-size:11px;}
+  .cdet-val{font-size:14px;}
+
+  /* Insurance strip */
+  .insurance-strip{padding:36px 16px !important;}
+  .ins-label{font-size:9px;letter-spacing:1.5px;line-height:1.5;margin-bottom:20px;}
+  .ins-grid{gap:20px 24px;}
+  .ins-logo{height:36px;}
+  .ins-logo .ins-name{font-size:16px;}
+
+  /* Trust badges */
+  .trust-badges{padding:24px 16px !important;}
+  .tb-inner{gap:14px 20px;}
+  .tb-item{font-size:9px;letter-spacing:.8px;}
+  .tb-item-icon{width:28px;height:28px;font-size:12px;}
+
+  /* Hesitation cards */
+  .hes-card{padding:24px 22px;}
+  .hes-q{font-size:18px;}
+  .hes-a{font-size:12px;}
+  .hes-cta-strip{padding:22px;flex-direction:column;text-align:center;}
+  .hes-cta-title{font-size:22px;}
+  .hes-cta-actions{width:100%;}
+  .hes-cta-actions a{flex:1;justify-content:center;}
+
+  /* Gallery — hero labels and thin accent hover */
+  .gallery-section{padding:70px 16px !important;}
+  .gallery-section .section-h2{font-size:32px !important;letter-spacing:1.5px;}
+  .gallery-grid{margin-top:40px;}
+  .gallery-row-single{grid-template-columns:1fr;gap:10px;}
+  .gphoto{aspect-ratio:16/11;}
+  .gphoto-tag{font-size:22px;}
+  /* Mobile has no hover — reveal the accent line + caption by default */
+  .gphoto-overlay::before{width:32px;}
+  .gphoto-caption{opacity:1;transform:none;}
+  .gphoto img{filter:brightness(.85) saturate(.95);}
+
+  /* FOOTER */
+  footer{padding:44px 18px 0;}
+  .footer-top{padding-bottom:32px;gap:32px;}
+  .footer-brand-name{font-size:20px;}
+  .footer-desc{font-size:13px;}
+  .footer-col h5{font-size:11px;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;padding:20px 0;font-size:11px;}
+  .footer-tagline{padding:14px 0;font-size:10px;}
+
+  /* Hide desktop-only hero trust card that tries to position-absolute */
+  .hero-float-card{display:none;}
+}
+
+/* Very small phones */
+@media(max-width:380px){
+  .hero-h1{font-size:36px !important;}
+  .section-h2{font-size:26px !important;}
+  .offer-msg{font-size:9px;}
+  .offer-cta{padding:5px 8px;font-size:8px;}
+}
+
+/* Landscape phones — compact hero so user sees content */
+@media(max-width:900px) and (orientation:landscape) and (max-height:500px){
+  .hero{min-height:auto;padding:90px 24px 60px;}
+  .hero-h1{font-size:36px !important;}
+  .hero-trust-row{display:none;}
+}
+
+/* Prevent horizontal scroll anywhere */
+html,body{max-width:100%;overflow-x:hidden;}
+img,video{max-width:100%;height:auto;}
+.hero-video{max-width:none;} /* Exception: hero video must fill */
+
 </style>
 </head>
 <body class="has-offer">
@@ -779,15 +1041,39 @@ footer{background:#060D18;padding:80px 80px 0;}
 
 <!-- PHOTO GALLERY -->
 <section class="gallery-section" id="gallery">
-  <div class="section-label rv">Our Practice</div>
-  <h2 class="section-h2 rv">A Practice You'll <em>Feel Good In</em></h2>
-  <p class="section-sub rv">Professional, welcoming, and equipped with modern technology — designed around patient comfort.</p>
+  <div class="section-label rv">Inside The Practice</div>
+  <h2 class="section-h2 rv">A Space Designed <em>for calm.</em></h2>
+  <p class="section-sub rv">Every room in our Huntington Beach practice was built with one thing in mind — making you forget you're at the dentist.</p>
   <div class="gallery-grid">
     <div class="gallery-row-single">
-      <div class="gphoto sq rv-l"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Reception and waiting area"><div class="gphoto-overlay"><span class="gphoto-tag">Reception</span></div></div>
-      <div class="gphoto sq rv" style="transition-delay:.08s"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Modern treatment room"><div class="gphoto-overlay"><span class="gphoto-tag">Treatment Room</span></div></div>
-      <div class="gphoto sq rv" style="transition-delay:.16s"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80" alt="Patient consultation room"><div class="gphoto-overlay"><span class="gphoto-tag">Consultation</span></div></div>
-      <div class="gphoto sq rv-r" style="transition-delay:.24s"><img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="Exterior of 6968 Warner Ave"><div class="gphoto-overlay"><span class="gphoto-tag">Our Location</span></div></div>
+      <div class="gphoto rv-l">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Reception and waiting area">
+        <div class="gphoto-overlay">
+          <div class="gphoto-tag">The Reception</div>
+          <div class="gphoto-caption">Where it starts</div>
+        </div>
+      </div>
+      <div class="gphoto rv" style="transition-delay:.08s">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Modern treatment room">
+        <div class="gphoto-overlay">
+          <div class="gphoto-tag">Treatment Suite</div>
+          <div class="gphoto-caption">Modern & gentle</div>
+        </div>
+      </div>
+      <div class="gphoto rv" style="transition-delay:.16s">
+        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80" alt="Patient consultation room">
+        <div class="gphoto-overlay">
+          <div class="gphoto-tag">Consultation</div>
+          <div class="gphoto-caption">One-on-one care</div>
+        </div>
+      </div>
+      <div class="gphoto rv-r" style="transition-delay:.24s">
+        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="Exterior of 6968 Warner Ave">
+        <div class="gphoto-overlay">
+          <div class="gphoto-tag">Our Location</div>
+          <div class="gphoto-caption">6968 Warner Ave</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
